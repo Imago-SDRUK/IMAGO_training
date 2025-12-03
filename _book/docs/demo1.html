@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,15 +69,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../assets/Imago-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -131,9 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Imago training</a> 
         <div class="sidebar-tools-main">
@@ -194,23 +191,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#approach" id="toc-approach" class="nav-link active" data-scroll-target="#approach">Approach:</a></li>
+  <li><a href="#load-lsoa-boundary-data-chosen-imago-product" id="toc-load-lsoa-boundary-data-chosen-imago-product" class="nav-link active" data-scroll-target="#load-lsoa-boundary-data-chosen-imago-product">Load LSOA boundary data + chosen Imago product</a></li>
+  <li><a href="#clean-and-inspect-basic-summary-statistics" id="toc-clean-and-inspect-basic-summary-statistics" class="nav-link" data-scroll-target="#clean-and-inspect-basic-summary-statistics">Clean and inspect: basic summary statistics</a></li>
+  <li><a href="#merge-with-imd-deprivation" id="toc-merge-with-imd-deprivation" class="nav-link" data-scroll-target="#merge-with-imd-deprivation">Merge with IMD (deprivation)</a></li>
+  <li><a href="#create-a-scatterplot-exposure-vs.-deprivation-decile" id="toc-create-a-scatterplot-exposure-vs.-deprivation-decile" class="nav-link" data-scroll-target="#create-a-scatterplot-exposure-vs.-deprivation-decile">Create a scatterplot: exposure vs.&nbsp;deprivation decile</a></li>
+  <li><a href="#calculate-correlations-and-simple-inequality-metrics" id="toc-calculate-correlations-and-simple-inequality-metrics" class="nav-link" data-scroll-target="#calculate-correlations-and-simple-inequality-metrics">Calculate correlations and simple inequality metrics</a></li>
+  <li><a href="#identify-highest-exposure-deciles-hotspots" id="toc-identify-highest-exposure-deciles-hotspots" class="nav-link" data-scroll-target="#identify-highest-exposure-deciles-hotspots">Identify highest-exposure deciles / hotspots</a></li>
+  <li><a href="#produce-a-small-output-table-or-lightweight-report" id="toc-produce-a-small-output-table-or-lightweight-report" class="nav-link" data-scroll-target="#produce-a-small-output-table-or-lightweight-report">Produce a small output table or lightweight report</a></li>
+  <li><a href="#generate-a-static-map-python-geopandas-r-sf-ggplot" id="toc-generate-a-static-map-python-geopandas-r-sf-ggplot" class="nav-link" data-scroll-target="#generate-a-static-map-python-geopandas-r-sf-ggplot">Generate a static map (Python: geopandas / R: sf + ggplot)</a></li>
+  <li><a href="#create-an-interactive-map-python-folium-r-leaflet" id="toc-create-an-interactive-map-python-folium-r-leaflet" class="nav-link" data-scroll-target="#create-an-interactive-map-python-folium-r-leaflet"># Create an interactive map (Python: folium / R: leaflet)</a></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach:</a></li>
   <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing packages</a></li>
-  <li><a href="#load-lsoa-boundary-data-chosen-imago-product" id="toc-load-lsoa-boundary-data-chosen-imago-product" class="nav-link" data-scroll-target="#load-lsoa-boundary-data-chosen-imago-product">Load LSOA boundary data + chosen Imago product</a>
+  <li><a href="#load-lsoa-boundary-data-chosen-imago-product-1" id="toc-load-lsoa-boundary-data-chosen-imago-product-1" class="nav-link" data-scroll-target="#load-lsoa-boundary-data-chosen-imago-product-1">Load LSOA boundary data + chosen Imago product</a>
   <ul class="collapse">
   <li><a href="#merge" id="toc-merge" class="nav-link" data-scroll-target="#merge">Merge</a></li>
   <li><a href="#summary-stats" id="toc-summary-stats" class="nav-link" data-scroll-target="#summary-stats">Summary stats</a></li>
   </ul></li>
   <li><a href="#clean-and-inspect-basic-summary-statistics-for-pm2.5_mean" id="toc-clean-and-inspect-basic-summary-statistics-for-pm2.5_mean" class="nav-link" data-scroll-target="#clean-and-inspect-basic-summary-statistics-for-pm2.5_mean">Clean and inspect: basic summary statistics for pm2.5_mean</a></li>
-  <li><a href="#merge-with-imd-deprivation" id="toc-merge-with-imd-deprivation" class="nav-link" data-scroll-target="#merge-with-imd-deprivation">Merge with IMD (deprivation)</a>
+  <li><a href="#merge-with-imd-deprivation-1" id="toc-merge-with-imd-deprivation-1" class="nav-link" data-scroll-target="#merge-with-imd-deprivation-1">Merge with IMD (deprivation)</a>
   <ul class="collapse">
   <li><a href="#aggregate-up-to-msoa-and-merge-with-pollution-dataset" id="toc-aggregate-up-to-msoa-and-merge-with-pollution-dataset" class="nav-link" data-scroll-target="#aggregate-up-to-msoa-and-merge-with-pollution-dataset">Aggregate up to MSOA and merge with pollution dataset</a></li>
   </ul></li>
-  <li><a href="#create-a-scatterplot-exposure-vs.-deprivation-decile" id="toc-create-a-scatterplot-exposure-vs.-deprivation-decile" class="nav-link" data-scroll-target="#create-a-scatterplot-exposure-vs.-deprivation-decile">Create a scatterplot: exposure vs.&nbsp;deprivation decile</a></li>
-  <li><a href="#calculate-correlations-and-simple-inequality-metrics" id="toc-calculate-correlations-and-simple-inequality-metrics" class="nav-link" data-scroll-target="#calculate-correlations-and-simple-inequality-metrics">Calculate correlations and simple inequality metrics</a></li>
-  <li><a href="#identify-highest-exposure-deciles-hotspots" id="toc-identify-highest-exposure-deciles-hotspots" class="nav-link" data-scroll-target="#identify-highest-exposure-deciles-hotspots">Identify highest-exposure deciles / hotspots</a></li>
+  <li><a href="#create-a-scatterplot-exposure-vs.-deprivation-decile-1" id="toc-create-a-scatterplot-exposure-vs.-deprivation-decile-1" class="nav-link" data-scroll-target="#create-a-scatterplot-exposure-vs.-deprivation-decile-1">Create a scatterplot: exposure vs.&nbsp;deprivation decile</a></li>
+  <li><a href="#calculate-correlations-and-simple-inequality-metrics-1" id="toc-calculate-correlations-and-simple-inequality-metrics-1" class="nav-link" data-scroll-target="#calculate-correlations-and-simple-inequality-metrics-1">Calculate correlations and simple inequality metrics</a></li>
+  <li><a href="#identify-highest-exposure-deciles-hotspots-1" id="toc-identify-highest-exposure-deciles-hotspots-1" class="nav-link" data-scroll-target="#identify-highest-exposure-deciles-hotspots-1">Identify highest-exposure deciles / hotspots</a></li>
   <li><a href="#generate-a-bivariate-map" id="toc-generate-a-bivariate-map" class="nav-link" data-scroll-target="#generate-a-bivariate-map">Generate a bivariate map</a></li>
-  <li><a href="#create-an-interactive-map-python-folium-r-leaflet" id="toc-create-an-interactive-map-python-folium-r-leaflet" class="nav-link" data-scroll-target="#create-an-interactive-map-python-folium-r-leaflet">Create an interactive map (Python: folium / R: leaflet)</a></li>
+  <li><a href="#create-an-interactive-map-python-folium-r-leaflet-1" id="toc-create-an-interactive-map-python-folium-r-leaflet-1" class="nav-link" data-scroll-target="#create-an-interactive-map-python-folium-r-leaflet-1">Create an interactive map (Python: folium / R: leaflet)</a></li>
+  <li><a href="#stashed-changes" id="toc-stashed-changes" class="nav-link" data-scroll-target="#stashed-changes">&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</a></li>
+  <li><a href="#approach-1" id="toc-approach-1" class="nav-link" data-scroll-target="#approach-1">Approach:</a></li>
+  <li><a href="#installing-packages-1" id="toc-installing-packages-1" class="nav-link" data-scroll-target="#installing-packages-1">Installing packages</a></li>
+  <li><a href="#load-lsoa-boundary-data-chosen-imago-product-2" id="toc-load-lsoa-boundary-data-chosen-imago-product-2" class="nav-link" data-scroll-target="#load-lsoa-boundary-data-chosen-imago-product-2">Load LSOA boundary data + chosen Imago product</a>
+  <ul class="collapse">
+  <li><a href="#merge-1" id="toc-merge-1" class="nav-link" data-scroll-target="#merge-1">Merge</a></li>
+  <li><a href="#summary-stats-1" id="toc-summary-stats-1" class="nav-link" data-scroll-target="#summary-stats-1">Summary stats</a></li>
+  </ul></li>
+  <li><a href="#clean-and-inspect-basic-summary-statistics-for-pm2.5_mean-1" id="toc-clean-and-inspect-basic-summary-statistics-for-pm2.5_mean-1" class="nav-link" data-scroll-target="#clean-and-inspect-basic-summary-statistics-for-pm2.5_mean-1">Clean and inspect: basic summary statistics for pm2.5_mean</a></li>
+  <li><a href="#merge-with-imd-deprivation-2" id="toc-merge-with-imd-deprivation-2" class="nav-link" data-scroll-target="#merge-with-imd-deprivation-2">Merge with IMD (deprivation)</a>
+  <ul class="collapse">
+  <li><a href="#aggregate-up-to-msoa-and-merge-with-pollution-dataset-1" id="toc-aggregate-up-to-msoa-and-merge-with-pollution-dataset-1" class="nav-link" data-scroll-target="#aggregate-up-to-msoa-and-merge-with-pollution-dataset-1">Aggregate up to MSOA and merge with pollution dataset</a></li>
+  </ul></li>
+  <li><a href="#create-a-scatterplot-exposure-vs.-deprivation-decile-2" id="toc-create-a-scatterplot-exposure-vs.-deprivation-decile-2" class="nav-link" data-scroll-target="#create-a-scatterplot-exposure-vs.-deprivation-decile-2">Create a scatterplot: exposure vs.&nbsp;deprivation decile</a></li>
+  <li><a href="#calculate-correlations-and-simple-inequality-metrics-2" id="toc-calculate-correlations-and-simple-inequality-metrics-2" class="nav-link" data-scroll-target="#calculate-correlations-and-simple-inequality-metrics-2">Calculate correlations and simple inequality metrics</a></li>
+  <li><a href="#identify-highest-exposure-deciles-hotspots-2" id="toc-identify-highest-exposure-deciles-hotspots-2" class="nav-link" data-scroll-target="#identify-highest-exposure-deciles-hotspots-2">Identify highest-exposure deciles / hotspots</a></li>
+  <li><a href="#generate-a-bivariate-map-1" id="toc-generate-a-bivariate-map-1" class="nav-link" data-scroll-target="#generate-a-bivariate-map-1">Generate a bivariate map</a></li>
+  <li><a href="#create-an-interactive-map-python-folium-r-leaflet-2" id="toc-create-an-interactive-map-python-folium-r-leaflet-2" class="nav-link" data-scroll-target="#create-an-interactive-map-python-folium-r-leaflet-2">Create an interactive map (Python: folium / R: leaflet)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/Imago-SDRUK/Imago-training/edit/main/docs/demo1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Imago-SDRUK/Imago-training/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -236,6 +260,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream &lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream <strong>Goal</strong>: Explore Imago datasets programmatically and replicate analyses across products (Pollution, Heat, SPF).</p>
+<p>Approach: Instructor demonstrates using one product; participants repeat steps using other dataset combinations.</p>
+<section id="load-lsoa-boundary-data-chosen-imago-product" class="level1">
+<h1>Load LSOA boundary data + chosen Imago product</h1>
+</section>
+<section id="clean-and-inspect-basic-summary-statistics" class="level1">
+<h1>Clean and inspect: basic summary statistics</h1>
+</section>
+<section id="merge-with-imd-deprivation" class="level1">
+<h1>Merge with IMD (deprivation)</h1>
+</section>
+<section id="create-a-scatterplot-exposure-vs.-deprivation-decile" class="level1">
+<h1>Create a scatterplot: exposure vs.&nbsp;deprivation decile</h1>
+</section>
+<section id="calculate-correlations-and-simple-inequality-metrics" class="level1">
+<h1>Calculate correlations and simple inequality metrics</h1>
+</section>
+<section id="identify-highest-exposure-deciles-hotspots" class="level1">
+<h1>Identify highest-exposure deciles / hotspots</h1>
+</section>
+<section id="produce-a-small-output-table-or-lightweight-report" class="level1">
+<h1>Produce a small output table or lightweight report</h1>
+</section>
+<section id="generate-a-static-map-python-geopandas-r-sf-ggplot" class="level1">
+<h1>Generate a static map (Python: geopandas / R: sf + ggplot)</h1>
+</section>
+<section id="create-an-interactive-map-python-folium-r-leaflet" class="level1">
+<h1># Create an interactive map (Python: folium / R: leaflet)</h1>
+</section>
 <section id="approach" class="level1">
 <h1>Approach:</h1>
 <p>Instructor demonstrates using one product; participants repeat steps using other dataset combinations.</p>
@@ -268,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="load-lsoa-boundary-data-chosen-imago-product" class="level1 page-columns page-full">
+<section id="load-lsoa-boundary-data-chosen-imago-product-1" class="level1 page-columns page-full">
 <h1>Load LSOA boundary data + chosen Imago product</h1>
 
 <div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-warning callout-titled" title="Review comment">
@@ -355,7 +408,7 @@ Review comment
 </div>
 </div>
 </section>
-<section id="merge-with-imd-deprivation" class="level1">
+<section id="merge-with-imd-deprivation-1" class="level1">
 <h1>Merge with IMD (deprivation)</h1>
 <p>–&gt; Replace with Link</p>
 <div class="cell">
@@ -454,7 +507,7 @@ override using the `.groups` argument.</code></pre>
 </div>
 </section>
 </section>
-<section id="create-a-scatterplot-exposure-vs.-deprivation-decile" class="level1">
+<section id="create-a-scatterplot-exposure-vs.-deprivation-decile-1" class="level1">
 <h1>Create a scatterplot: exposure vs.&nbsp;deprivation decile</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(imd_rank_msoa <span class="sc">~</span> pm2<span class="fl">.5</span>_mean, <span class="at">data =</span> msoa_final)</span>
@@ -525,7 +578,7 @@ TRUE), : Ignoring unknown parameters: `label.size`</code></pre>
 </div>
 </div>
 </section>
-<section id="calculate-correlations-and-simple-inequality-metrics" class="level1">
+<section id="calculate-correlations-and-simple-inequality-metrics-1" class="level1">
 <h1>Calculate correlations and simple inequality metrics</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic Pearson correlation</span></span>
@@ -573,14 +626,378 @@ sample estimates:
 </div>
 </div>
 </section>
-<section id="identify-highest-exposure-deciles-hotspots" class="level1">
+<section id="identify-highest-exposure-deciles-hotspots-1" class="level1">
 <h1>Identify highest-exposure deciles / hotspots</h1>
 </section>
 <section id="generate-a-bivariate-map" class="level1">
 <h1>Generate a bivariate map</h1>
 </section>
-<section id="create-an-interactive-map-python-folium-r-leaflet" class="level1">
+<section id="create-an-interactive-map-python-folium-r-leaflet-1" class="level1">
 <h1>Create an interactive map (Python: folium / R: leaflet)</h1>
+</section>
+<section id="stashed-changes" class="level1">
+<h1>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</h1>
+</section>
+<section id="approach-1" class="level1">
+<h1>Approach:</h1>
+<p>Instructor demonstrates using one product; participants repeat steps using other dataset combinations.</p>
+<p>This demo will explore pollution PM2.5 data and IMD 2025.</p>
+<p>To have more fun. explore heat? lots of possibilities - and specific aspects of IMD? Domains of deprivation or other MSOA level data</p>
+</section>
+<section id="installing-packages-1" class="level1">
+<h1>Installing packages</h1>
+<p>We will start by loading core packages for working with spatial data. See detailed description of <a href="https://r.geocompx.org/spatial-class">R</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'sf' library, which stands for Simple Features, used for working with spatial data.</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'tidyverse' library, a collection of packages for data manipulation and visualization.</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'tmap' library, which is used for creating thematic maps and visualizing spatial data.</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'readr' library provides a fast and user-friendly way to read data from common formats like CSV.</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Converts Between GeoJSON and simple feature objects</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geojsonsf) </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Using data from OpenStreetMap (OSM)</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osmdata)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Static maps</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(basemapR)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-lsoa-boundary-data-chosen-imago-product-2" class="level1 page-columns page-full">
+<h1>Load LSOA boundary data + chosen Imago product</h1>
+
+<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-warning callout-titled" title="Review comment">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Review comment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>EP: will need to ammend this so it linkes back to data catalogue</p>
+</div>
+</div></div><p>Load MSOA boundary data –&gt; replace with links</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>msoa_uk <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"../data/UK_MSOA_IZB_SDZ.shp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>–&gt; replace with links Load pollution data product</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pm25 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/PM25_concentration_MSOA_2023.csv"</span>) <span class="co"># import housesales data from csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="merge-1" class="level2">
+<h2 class="anchored" data-anchor-id="merge-1">Merge</h2>
+<p>Merge and then plot variable pm2.5_mean with ggplot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>msoa_pm25 <span class="ot">&lt;-</span> msoa_uk <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pm25, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dt_zn_c"</span> <span class="ot">=</span> <span class="st">"dt_zn_c"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summary-stats-1" class="level2">
+<h2 class="anchored" data-anchor-id="summary-stats-1">Summary stats</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(msoa_pm25<span class="sc">$</span>pm2<span class="fl">.5</span>_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  4.891   7.388   8.010   7.973   8.602  10.543       6 </code></pre>
+</div>
+</div>
+<p>Useful for understanding tail behaviour and skewness.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(msoa_pm25<span class="sc">$</span>pm2<span class="fl">.5</span>_mean, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       0%       10%       20%       30%       40%       50%       60%       70% 
+ 4.891121  6.862401  7.242492  7.513803  7.758437  8.009963  8.242344  8.488465 
+      80%       90%      100% 
+ 8.724281  9.064899 10.543109 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="clean-and-inspect-basic-summary-statistics-for-pm2.5_mean-1" class="level1">
+<h1>Clean and inspect: basic summary statistics for pm2.5_mean</h1>
+<p>–&gt; Make map bigger &amp; legend smaller</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msoa_pm25) <span class="sc">+</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> pm2<span class="fl">.5</span>_mean), <span class="at">colour =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">option =</span> <span class="st">"magma"</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"PM2.5 (µg/m³)"</span>,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="dv">1</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> scales<span class="sc">::</span><span class="fu">pretty_breaks</span>(<span class="dv">6</span>)   <span class="co"># clean, human-friendly scale</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"PM2.5 Mean Concentration by MSOA"</span>,</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#subtitle = "Higher values indicate poorer air quality",</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Imago"</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">colour =</span> <span class="st">"#555555"</span>),</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)  <span class="co"># centre caption</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="demo1_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="merge-with-imd-deprivation-2" class="level1">
+<h1>Merge with IMD (deprivation)</h1>
+<p>–&gt; Replace with Link</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load IMD data (replace filename with actual catalogue link)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>imd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/File_1_IoD2025_Index_of_Multiple_Deprivation.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 33755 Columns: 6
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): LSOA code (2021), LSOA name (2021), Local Authority District code (...
+dbl (2): Index of Multiple Deprivation (IMD) Rank (where 1 is most deprived)...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect column names to identify the join key</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(imd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "LSOA code (2021)"                                                                
+[2] "LSOA name (2021)"                                                                
+[3] "Local Authority District code (2024)"                                            
+[4] "Local Authority District name (2024)"                                            
+[5] "Index of Multiple Deprivation (IMD) Rank (where 1 is most deprived)"             
+[6] "Index of Multiple Deprivation (IMD) Decile (where 1 is most deprived 10% of LSOA"</code></pre>
+</div>
+</div>
+<section id="aggregate-up-to-msoa-and-merge-with-pollution-dataset-1" class="level2">
+<h2 class="anchored" data-anchor-id="aggregate-up-to-msoa-and-merge-with-pollution-dataset-1">Aggregate up to MSOA and merge with pollution dataset</h2>
+<p>https://geoportal.statistics.gov.uk/datasets/589ae01495bf4ddfaaa25b96476d53d7/about Postcode to OA (2021) to LSOA to MSOA to LAD (May 2025) Best Fit Lookup in the UK</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load lookup</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>LSOA21_MSOA21 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/PCD_OA21_LSOA21_MSOA21_LAD_MAY25_UK_LU.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(lsoa21cd, msoa21cd, ladcd, lsoa21nm, msoa21nm, ladnm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2714964 Columns: 14
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (11): pcd7, pcd8, pcds, oa21cd, lsoa21cd, msoa21cd, ladcd, lsoa21nm, mso...
+dbl  (3): dointr, doterm, usertype
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Join to IMD </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>lsoa_msoa_imd <span class="ot">&lt;-</span> LSOA21_MSOA21 <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(imd, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"lsoa21cd"</span> <span class="ot">=</span> <span class="st">"LSOA code (2021)"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Join IMD (LSOA-level)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>lsoa_msoa_imd_clean <span class="ot">&lt;-</span> lsoa_msoa_imd <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    lsoa21cd,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    msoa21cd,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    ladcd,</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    lsoa21nm,</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    msoa21nm,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    ladnm,</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Index of Multiple Deprivation (IMD) Rank (where 1 is most deprived)</span><span class="st">`</span>,</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Index of Multiple Deprivation (IMD) Decile (where 1 is most deprived 10% of LSOA</span><span class="st">`</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">imd_rank =</span> <span class="st">`</span><span class="at">Index of Multiple Deprivation (IMD) Rank (where 1 is most deprived)</span><span class="st">`</span>,</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">imd_decile =</span> <span class="st">`</span><span class="at">Index of Multiple Deprivation (IMD) Decile (where 1 is most deprived 10% of LSOA</span><span class="st">`</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(lsoa_msoa_imd_clean<span class="sc">$</span>imd_rank)) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 83.24475</code></pre>
+</div>
+</div>
+<p>This gives the mean PM2.5 per MSOA, averaging across all LSOAs inside each MSOA.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>msoa_imd_agg <span class="ot">&lt;-</span> lsoa_msoa_imd_clean <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(msoa21cd, msoa21nm, ladcd, ladnm) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">imd_rank_msoa =</span> <span class="fu">mean</span>(imd_rank, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'msoa21cd', 'msoa21nm', 'ladcd'. You can
+override using the `.groups` argument.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>msoa_imd_agg <span class="ot">&lt;-</span> msoa_imd_agg <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">msoa21cd =</span> <span class="fu">trimws</span>(<span class="fu">as.character</span>(msoa21cd)))</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>msoa_pm25 <span class="ot">&lt;-</span> msoa_pm25 <span class="sc">%&gt;%</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">msoa21cd =</span> <span class="fu">trimws</span>(<span class="fu">as.character</span>(MSOA21C)))</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>msoa_final <span class="ot">&lt;-</span> msoa_imd_agg <span class="sc">%&gt;%</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(msoa_pm25 <span class="sc">%&gt;%</span> <span class="fu">select</span>(msoa21cd, pm2<span class="fl">.5</span>_mean), <span class="at">by =</span> <span class="st">"msoa21cd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="create-a-scatterplot-exposure-vs.-deprivation-decile-2" class="level1">
+<h1>Create a scatterplot: exposure vs.&nbsp;deprivation decile</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(imd_rank_msoa <span class="sc">~</span> pm2<span class="fl">.5</span>_mean, <span class="at">data =</span> msoa_final)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>eq <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"IMD Rank = "</span>, <span class="fu">round</span>(<span class="fu">coef</span>(model)[<span class="dv">1</span>], <span class="dv">2</span>),</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">" + "</span>, <span class="fu">round</span>(<span class="fu">coef</span>(model)[<span class="dv">2</span>], <span class="dv">3</span>), <span class="st">" × PM2.5</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"R² = "</span>, <span class="fu">round</span>(<span class="fu">summary</span>(model)<span class="sc">$</span>r.squared, <span class="dv">3</span>)</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msoa_final, <span class="fu">aes</span>(<span class="at">x =</span> pm2<span class="fl">.5</span>_mean, <span class="at">y =</span> imd_rank_msoa)) <span class="sc">+</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">colour =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"black"</span>,</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.9</span>,</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"grey80"</span></span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"label"</span>,</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">quantile</span>(msoa_final<span class="sc">$</span>pm2<span class="fl">.5</span>_mean, <span class="fl">0.98</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">quantile</span>(msoa_final<span class="sc">$</span>imd_rank_msoa, <span class="fl">0.05</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> eq,</span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">1</span>,</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="dv">0</span>,</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span>,</span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">label.size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.8</span></span>
+<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship Between PM2.5 Exposure and IMD Deprivation Rank"</span>,</span>
+<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Higher ranks indicate lower deprivation (1 = most deprived)"</span>,</span>
+<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"PM2.5 Mean Concentration (µg/m³)"</span>,</span>
+<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"IMD Rank"</span></span>
+<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-41"><a href="#cb53-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb53-42"><a href="#cb53-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb53-43"><a href="#cb53-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb53-44"><a href="#cb53-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>)),</span>
+<span id="cb53-45"><a href="#cb53-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-46"><a href="#cb53-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"grey85"</span>)</span>
+<span id="cb53-47"><a href="#cb53-47" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in annotate("label", x = quantile(msoa_final$pm2.5_mean, 0.98, na.rm =
+TRUE), : Ignoring unknown parameters: `label.size`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3939 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3939 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="demo1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-correlations-and-simple-inequality-metrics-2" class="level1">
+<h1>Calculate correlations and simple inequality metrics</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic Pearson correlation</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>cor_test <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(msoa_final<span class="sc">$</span>pm2<span class="fl">.5</span>_mean, msoa_final<span class="sc">$</span>imd_rank_msoa)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>cor_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  msoa_final$pm2.5_mean and msoa_final$imd_rank_msoa
+t = -23.176, df = 6854, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.2913852 -0.2474807
+sample estimates:
+      cor 
+-0.269573 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create IMD rank quintiles</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>msoa_final <span class="ot">&lt;-</span> msoa_final <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">imd_quintile =</span> <span class="fu">ntile</span>(imd_rank_msoa, <span class="dv">5</span>))  <span class="co"># 1 = most deprived, 5 = least deprived</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarise PM2.5 by IMD quintile</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>ineq_table <span class="ot">&lt;-</span> msoa_final <span class="sc">%&gt;%</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(imd_quintile) <span class="sc">%&gt;%</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_pm25 =</span> <span class="fu">mean</span>(pm2<span class="fl">.5</span>_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_pm25 =</span> <span class="fu">median</span>(pm2<span class="fl">.5</span>_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>ineq_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  imd_quintile mean_pm25 median_pm25     n
+         &lt;int&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+1            1      8.57        8.62  1372
+2            2      8.46        8.53  1371
+3            3      8.26        8.28  1371
+4            4      8.11        8.13  1371
+5            5      8.09        8.08  1371
+6           NA      7.11        7.13  3939</code></pre>
+</div>
+</div>
+</section>
+<section id="identify-highest-exposure-deciles-hotspots-2" class="level1">
+<h1>Identify highest-exposure deciles / hotspots</h1>
+</section>
+<section id="generate-a-bivariate-map-1" class="level1">
+<h1>Generate a bivariate map</h1>
+</section>
+<section id="create-an-interactive-map-python-folium-r-leaflet-2" class="level1">
+<h1>Create an interactive map (Python: folium / R: leaflet)</h1>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Stashed changes</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
 
 </section>
@@ -637,14 +1054,13 @@ sample estimates:
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
